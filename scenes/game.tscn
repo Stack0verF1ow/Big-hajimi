@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dtb27q2weqh5t"]
+
+[node name="Game" type="Node2D"]
+
+[node name="HajimiContainor" type="RigidBody2D" parent="."]
