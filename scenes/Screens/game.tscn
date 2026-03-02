@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtb27q2weqh5t"]
+
+[ext_resource type="Script" uid="uid://cvpvtwln72plq" path="res://scenes/Screens/game.gd" id="1_6hox5"]
+[ext_resource type="PackedScene" uid="uid://cbmbecvdsmm6j" path="res://scenes/Container/hajimi_container.tscn" id="1_enotp"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_6hox5")
+
+[node name="HajimiContainer" parent="." instance=ExtResource("1_enotp")]
+unique_name_in_owner = true
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(270, 262)

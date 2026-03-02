@@ -1,0 +1,28 @@
+{
+  "balls": [
+	{
+	  "id": 1,
+	  "name": "葡萄",
+	  "radius": 50.0,
+	  "texture": "res://assets/1.PNG",
+	  "score": 10,
+	  "sfx": "res://assets/曼波，曼波.wav"
+	},
+	{
+	  "id": 2,
+	  "name": "橙子",
+	  "radius": 75.0,
+	  "texture": "res://assets/1.PNG",
+	  "score": 20,
+	  "sfx": "res://assets/曼波，曼波.wav"
+	},
+	{
+	  "id": 3,
+	  "name": "西瓜",
+	  "radius": 100.0,
+	  "texture": "res://assets/1.PNG",
+	  "score": 40,
+	  "sfx": "res://assets/曼波，曼波.wav"
+	}
+  ]
+}

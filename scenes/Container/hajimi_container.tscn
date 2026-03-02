@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cbmbecvdsmm6j"]
+
+[node name="HajimiContainer" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-189.48131, 171.04604)
+scale = Vector2(0.5004594, 0.65780264)
+polygon = PackedVector2Array(369.62305, 103.72473, 377.62305, 1195.7247, 1452.6226, 1201.7247, 1458.6226, 94.72473, 1358.6226, 99.72473, 1352.6226, 970.72473, 1179.6226, 1078.7247, 922.62305, 1127.7247, 667.62305, 1081.7247, 474.62305, 970.72473, 462.62305, 106.72473)

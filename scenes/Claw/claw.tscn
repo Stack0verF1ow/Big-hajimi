@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://botk4md1n126k"]
+
+[node name="Claw" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1, 1)
+polygon = PackedVector2Array(253, 0, 228, 20, 238, 42, 253, 8, 261, 41, 271, 18)
