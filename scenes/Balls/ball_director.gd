@@ -21,7 +21,7 @@ func create_ball_by_index(index: int) -> Ball:
 	
 	# 使用建造者模式组装从数据读取的信息
 	return builder.reset()\
-		.set_basic_info(config["id"], config["score"])\
+		.set_basic_info(config["id"], config["score"], index)\
 		.set_physics(config.get("radius", 50.0))\
-		.set_assets(config["texture"], config.get("sfx", ""))\
+		.set_assets(config["texture"], config.get("spawn_sfx", ""), config.get("merge_sfx", ""))\
 		.build()

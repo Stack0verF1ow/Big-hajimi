@@ -16,8 +16,7 @@ script = ExtResource("1_cxlvu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_nxl05")
-position = Vector2(-3, -4.9999995)
-scale = Vector2(0.17302054, 0.15817374)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_7s4qf")
 
 [node name="BallCollisionShape" type="CollisionShape2D" parent="."]

@@ -6,7 +6,8 @@
 	  "radius": 50.0,
 	  "texture": "res://assets/1.PNG",
 	  "score": 10,
-	  "sfx": "res://assets/曼波，曼波.wav"
+	 "spawn_sfx": "res://assets/曼波，曼波.wav",
+	 "merge_sfx": "res://assets/Teio私人笑声.wav"
 	},
 	{
 	  "id": 2,
@@ -14,7 +15,8 @@
 	  "radius": 75.0,
 	  "texture": "res://assets/1.PNG",
 	  "score": 20,
-	  "sfx": "res://assets/曼波，曼波.wav"
+	  "spawn_sfx": "res://assets/曼波，曼波.wav",
+	 "merge_sfx": "res://assets/Teio私人笑声.wav"
 	},
 	{
 	  "id": 3,
@@ -22,7 +24,8 @@
 	  "radius": 100.0,
 	  "texture": "res://assets/1.PNG",
 	  "score": 40,
-	  "sfx": "res://assets/曼波，曼波.wav"
+	  "spawn_sfx": "res://assets/曼波，曼波.wav",
+	 "merge_sfx": "res://assets/Teio私人笑声.wav"
 	}
   ]
 }

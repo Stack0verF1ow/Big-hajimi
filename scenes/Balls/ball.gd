@@ -1,45 +1,76 @@
 extends RigidBody2D
 class_name Ball
 
-var ball_type: int
+# ── FSM 状态枚举 ─────────────────────────────────────────────
+enum State { IDLE, MERGING, DEAD }
+
+# ── 对外信号，由 Game 统一监听 ────────────────────────────────
+signal want_to_merge(ball_a: Ball, ball_b: Ball)
+
+# ── 数据属性 ─────────────────────────────────────────────────
+var ball_type: int       # config 中的 id (1, 2, 3...)
+var ball_index: int      # config 数组下标 (0, 1, 2...)，用于查找"下一级"
 var score_value: int
-var combine_sound: AudioStream
-# 预存配置数据
 var _pending_data: Dictionary
 
-@onready var sprite = $Sprite2D
-@onready var collision = %BallCollisionShape
+# ── FSM 内部管理 ─────────────────────────────────────────────
+var _current_state: BallState
+var _state_factory := BallStateFactory.new()
+
+@onready var sprite     = $Sprite2D
+@onready var collision  = %BallCollisionShape
 @onready var sfx_player = $AudioStreamPlayer2D
 
-# 初始化方法，由 Builder 调用
-func setup(data: Dictionary):
+# ── 由 BallBuilder 在实例化后立即调用 ────────────────────────
+func setup(data: Dictionary) -> void:
 	_pending_data = data
-	# 基础属性（非节点属性）可以立即赋值
-	ball_type = data.get("type", 0)
+	ball_type   = data.get("type",  0)
+	ball_index  = data.get("index", 0)
 	score_value = data.get("score", 0)
 
-func _ready():
+func _ready() -> void:
+	_apply_visual_data()
+	# 启动 FSM，初始状态为 IDLE
+	_transition_to(State.IDLE)
+
+# ── 视觉 / 物理初始化（与 FSM 无关）────────────────────────
+func _apply_visual_data() -> void:
 	if _pending_data.is_empty():
 		return
-		
-	# 使用 get(键名, 默认值) 来防止 "Invalid access" 错误
+
 	var tex = _pending_data.get("texture")
-	var sc  = _pending_data.get("scale", 1.0) # 如果没有 scale，默认为 1.0
 	var rad = _pending_data.get("radius", 50.0)
-	
-	if tex:
-		sprite.texture = tex
-		sprite.scale = Vector2(sc, sc)
-	
+
 	var shape = CircleShape2D.new()
 	shape.radius = rad
 	collision.shape = shape
-	
-	# 音效同理
+
+	if tex:
+		sprite.texture = tex
+		var tex_size = tex.get_size()
+		var d = rad * 2.0
+		sprite.scale = Vector2(d / tex_size.x, d / tex_size.y)
+
 	var sfx = _pending_data.get("sound")
 	if sfx:
 		sfx_player.stream = sfx
 
-func _on_body_entered(body):
-	# 这里编写合成逻辑：如果碰撞体是同类型水果且 ID 更小（防止重复生成）则合成
-	pass
+# ── FSM 核心：状态转换 ────────────────────────────────────────
+func _transition_to(new_state: State, data: BallStateData = BallStateData.new()) -> void:
+	# 清理旧状态
+	if is_instance_valid(_current_state):
+		_current_state.queue_free()
+
+	# 创建新状态，注入上下文后再挂载
+	var state = _state_factory.get_fresh_state(new_state)
+	state.setup(self, data)
+	state.state_transition_requested.connect(_on_state_transition_requested)
+	add_child(state)
+	_current_state = state
+
+func _on_state_transition_requested(new_state: State, data: BallStateData) -> void:
+	_transition_to(new_state, data)
+
+# ── 外部查询接口（供 BallStateIdle 仲裁用）───────────────────
+func is_idle() -> bool:
+	return is_instance_valid(_current_state) and _current_state is BallStateIdle
