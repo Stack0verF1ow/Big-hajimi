@@ -4,7 +4,7 @@
 	  "id": 1,
 	  "name": "葡萄",
 	  "radius": 50.0,
-	  "texture": "res://assets/1.PNG",
+	  "texture": "res://assets/2.png",
 	  "score": 10,
 	 "spawn_sfx": "res://assets/曼波，曼波.wav",
 	 "merge_sfx": "res://assets/Teio私人笑声.wav"
@@ -13,7 +13,7 @@
 	  "id": 2,
 	  "name": "橙子",
 	  "radius": 75.0,
-	  "texture": "res://assets/1.PNG",
+	  "texture": "res://assets/5.PNG",
 	  "score": 20,
 	  "spawn_sfx": "res://assets/曼波，曼波.wav",
 	 "merge_sfx": "res://assets/Teio私人笑声.wav"

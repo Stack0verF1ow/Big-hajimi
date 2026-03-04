@@ -1,30 +1,43 @@
 class_name Game
 extends Node2D
 
-@onready var hajimi_container: StaticBody2D = %HajimiContainer
-@onready var spawn_point: Marker2D          = %SpawnPoint
+@onready var hajimi_container:  StaticBody2D    = %HajimiContainer
+@onready var launcher_manager:  LauncherManager = %LauncherManager
+@onready var ui:                UI              = %UI
 
-var director: BallDirector
-var score: int = 0
+var director:        BallDirector
+var score:           int = 0
 var _max_ball_index: int = 0
+var _config_data:    Array[Dictionary] = []                     # ← 5. 明确元素类型
+var _ball_queue    := BallQueue.new()
 
 func _ready() -> void:
 	var builder = BallBuilder.new()
 	director    = BallDirector.new(builder)
-	var data    = DataLoader.load_ball_config("res://data/ball_config.json")
-	director.load_data(data)
-	_max_ball_index = data.size() - 1
+	_config_data = DataLoader.load_ball_config("res://data/ball_config.json")
+	director.load_data(_config_data)
+	_max_ball_index = _config_data.size() - 1
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("create"):
-		spawn_ball()
+	ui.setup(_config_data)
 
-# ── 投放新球 ─────────────────────────────────────────────────
-func spawn_ball() -> void:
-	var random_index = randi() % 3
-	_create_and_add_ball(random_index, get_global_mouse_position())
+	# Game 只和 LauncherManager 通信
+	launcher_manager.launch_requested.connect(_on_launch_requested)
+	_ball_queue.queue_changed.connect(_on_queue_changed)
+	_on_queue_changed(_ball_queue.peek_all())
 
-# ── 统一创建入口 ──────────────────────────────────────────────
+# 玩家触发发射 → 从队列取球 → 在发射器位置生成
+func _on_launch_requested() -> void:
+	var index := _ball_queue.consume()
+	_create_and_add_ball(index, launcher_manager.get_spawn_position())
+
+# 队列变化 → 更新发射器预览 + UI
+func _on_queue_changed(indices: Array[int]) -> void:
+	var config: Dictionary = _config_data[indices[0]]
+	launcher_manager.show_next_ball(config)
+	ui.on_queue_changed(indices)
+
+# ── 以下逻辑不变 ─────────────────────────────────────────────
+
 func _create_and_add_ball(index: int, pos: Vector2) -> Ball:
 	var ball = director.create_ball_by_index(index)
 	if not ball:
@@ -34,30 +47,23 @@ func _create_and_add_ball(index: int, pos: Vector2) -> Ball:
 	ball.want_to_merge.connect(_on_merge_requested)
 	return ball
 
-# ── 合并处理：由 BallStateMerging 触发 ───────────────────────
 func _on_merge_requested(ball_a: Ball, ball_b: Ball) -> void:
 	if not is_instance_valid(ball_a) or not is_instance_valid(ball_b):
 		return
 
 	var merge_pos  = (ball_a.global_position + ball_b.global_position) / 2.0
 	var next_index = ball_a.ball_index + 1
-	var is_max = next_index > _max_ball_index
+	var is_max     = next_index > _max_ball_index
 
-	# 得分
 	score += ball_a.score_value + ball_b.score_value
-	print("合成！得分 +%d，总分：%d" % [ball_a.score_value + ball_b.score_value, score])
+	ui.update_score(score)
 
-	# 只有最大球消除时才携带播放标志
-	var dead_data = BallStateData.build().set_play_merge_sfx(is_max)
-	ball_a._transition_to(Ball.State.DEAD, dead_data)
-	ball_b._transition_to(Ball.State.DEAD, dead_data)
+	ball_a._transition_to(Ball.State.DEAD, BallStateData.build().set_play_merge_sfx(is_max))
+	ball_b._transition_to(Ball.State.DEAD, BallStateData.build().set_play_merge_sfx(false))
 
-	# 最大球合并 → 仅消除，不生成新球
 	if is_max:
-		print("🎉 最大球合并消除！")
 		return
 
-	# 生成下一级球，deferred 等本帧物理结束
 	call_deferred("_spawn_merged_ball", next_index, merge_pos)
 
 func _spawn_merged_ball(next_index: int, pos: Vector2) -> void:

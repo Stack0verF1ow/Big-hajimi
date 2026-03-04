@@ -1,25 +1,29 @@
 # DataLoader.gd
 class_name DataLoader
 
-# 专注读取文件和解析 JSON
-static func load_ball_config(path: String) -> Array:
+static func load_ball_config(path: String) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+
 	if not FileAccess.file_exists(path):
 		push_error("配置文件不存在: " + path)
-		return []
+		return result
 
 	var file = FileAccess.open(path, FileAccess.READ)
 	var json_string = file.get_as_text()
 	var json = JSON.new()
 	var error = json.parse(json_string)
-	
-	if error == OK:
-		var data = json.get_data()
-		# 确保返回的是数组
-		if data is Dictionary and data.has("balls"):
-			return data["balls"]
-		else:
-			push_error("JSON 结构不正确")
-			return []
-	else:
+
+	if error != OK:
 		push_error("JSON 解析错误: " + json.get_error_message())
-		return []
+		return result
+
+	var data = json.get_data()
+	if not (data is Dictionary and data.has("balls")):
+		push_error("JSON 结构不正确")
+		return result
+
+	# JSON 解析结果是无类型 Array，需逐条 assign 才能转为 Array[Dictionary]
+	for item in data["balls"]:
+		result.append(item as Dictionary)
+
+	return result

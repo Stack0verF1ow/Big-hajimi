@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://7d0ytgxn27wi"]
+
+[ext_resource type="Script" uid="uid://dhhasqtasn17c" path="res://scenes/UI/ui.gd" id="1_f54a5"]
+[ext_resource type="Texture2D" uid="uid://c5artomkwrdsd" path="res://assets/modifided version of the sprite sheet.png" id="1_suays"]
+[ext_resource type="Texture2D" uid="uid://bre2jjdl2fln0" path="res://assets/1.PNG" id="2_41gti"]
+[ext_resource type="Texture2D" uid="uid://dv7h08sbhvqgh" path="res://assets/5.PNG" id="3_f54a5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yb1mt"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(645, 100, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_41gti"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(677, 102, 22, 22)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_f54a5")
+
+[node name="UIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Control" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "分数"
+
+[node name="Control2" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PauseButton" type="Button" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_yb1mt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_41gti")
+theme_override_styles/hover = SubResource("StyleBoxTexture_41gti")
+toggle_mode = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SkillContainer" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Skill1" type="Button" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2/SkillContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Skill2" type="Button" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2/SkillContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="PreviewContainer" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Preview1" type="TextureRect" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2/PreviewContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_41gti")
+expand_mode = 4
+
+[node name="Preview2" type="TextureRect" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2/PreviewContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_f54a5")
+expand_mode = 2
