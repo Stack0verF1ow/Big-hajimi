@@ -1,13 +1,18 @@
 class_name ClawLauncher
 extends BaseLauncher
 
-# 水平移动边界（由 Game 或 LauncherManager 根据容器宽度设置）
-var _x_min: float = -300.0
-var _x_max: float =  300.0
-var _ball_radius: float = 0.0   # 当前球半径，用于修正 clamp 边界
+var _x_min: float = 0.0
+var _x_max: float = 0.0
+var _ball_radius: float = 0.0
 
-@onready var visual:       Sprite2D = $Visual
+@onready var visual:       Node2D   = $Visual
 @onready var preview_ball: Sprite2D = $PreviewBall
+
+func _ready() -> void:
+	# 从 viewport 动态读取，与实际窗口始终一致
+	var viewport_width := get_viewport_rect().size.x
+	_x_min = 0.0
+	_x_max = viewport_width
 
 func _process(_delta: float) -> void:
 	_follow_mouse()
@@ -33,7 +38,3 @@ func _follow_mouse() -> void:
 	# 左右边界各缩进一个球半径，防止球体超出容器
 	var clamped_x := clampf(mouse_x, _x_min + _ball_radius, _x_max - _ball_radius)
 	global_position.x = clamped_x
-
-func set_bounds(x_min: float, x_max: float) -> void:
-	_x_min = x_min
-	_x_max = x_max

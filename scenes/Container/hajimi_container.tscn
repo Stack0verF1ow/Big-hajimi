@@ -1,6 +1,21 @@
-[gd_scene format=3 uid="uid://cbmbecvdsmm6j"]
+[gd_scene load_steps=3 format=3 uid="uid://cbmbecvdsmm6j"]
+
+[ext_resource type="Script" uid="uid://bfvvfqb84yqb5" path="res://scenes/Container/deadline.gd" id="1_okx13"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gg8i0"]
+size = Vector2(540, 10)
 
 [node name="HajimiContainer" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="Deadline" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+script = ExtResource("1_okx13")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deadline"]
+position = Vector2(271, 230)
+shape = SubResource("RectangleShape2D_gg8i0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-189.48131, 171.04604)

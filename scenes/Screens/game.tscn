@@ -12,7 +12,7 @@ metadata/_edit_lock_ = true
 
 [node name="LauncherManager" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(272, 200)
+position = Vector2(263, 175)
 script = ExtResource("4_g7uhd")
 metadata/_custom_type_script = "uid://cxe86hn6cqwbi"
 

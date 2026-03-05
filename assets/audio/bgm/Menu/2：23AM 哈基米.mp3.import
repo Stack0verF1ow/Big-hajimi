@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4fh4r2xwyn5d"
+path="res://.godot/imported/2：23AM 哈基米.mp3-5aad11163ef3060d860801781ba044cb.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/bgm/Menu/2：23AM 哈基米.mp3"
+dest_files=["res://.godot/imported/2：23AM 哈基米.mp3-5aad11163ef3060d860801781ba044cb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

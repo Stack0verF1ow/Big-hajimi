@@ -15,6 +15,13 @@ run/main_scene="uid://dtb27q2weqh5t"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameBus="*res://global/game_bus.gd"
+GameManager="*res://scenes/Screens/GameManager/game_manager.gd"
+SoundPlayer="*res://global/Audio/sound_player.gd"
+MusicPlayer="*res://global/Audio/music_player.gd"
+
 [display]
 
 window/size/viewport_width=540
@@ -27,6 +34,11 @@ create={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(556, 24),"global_position":Vector2(565, 72),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="ball"
+2d_physics/layer_2="ball_container"
 
 [rendering]
 

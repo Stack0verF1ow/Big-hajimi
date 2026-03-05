@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://7d0ytgxn27wi"]
+[gd_scene load_steps=8 format=3 uid="uid://7d0ytgxn27wi"]
 
 [ext_resource type="Script" uid="uid://dhhasqtasn17c" path="res://scenes/UI/ui.gd" id="1_f54a5"]
-[ext_resource type="Texture2D" uid="uid://c5artomkwrdsd" path="res://assets/modifided version of the sprite sheet.png" id="1_suays"]
-[ext_resource type="Texture2D" uid="uid://bre2jjdl2fln0" path="res://assets/1.PNG" id="2_41gti"]
-[ext_resource type="Texture2D" uid="uid://dv7h08sbhvqgh" path="res://assets/5.PNG" id="3_f54a5"]
+[ext_resource type="Texture2D" uid="uid://c5artomkwrdsd" path="res://assets/texture/UI/modifided version of the sprite sheet.png" id="1_suays"]
+[ext_resource type="Shader" uid="uid://mrki4cuqrgs3" path="res://scenes/Balls/ball.gdshader" id="3_7e3k0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yb1mt"]
 texture = ExtResource("1_suays")
@@ -12,6 +11,12 @@ region_rect = Rect2(645, 100, 22, 24)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_41gti"]
 texture = ExtResource("1_suays")
 region_rect = Rect2(677, 102, 22, 22)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m41qk"]
+shader = ExtResource("3_7e3k0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35jxk"]
+shader = ExtResource("3_7e3k0")
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_f54a5")
@@ -91,13 +96,13 @@ layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="Preview1" type="TextureRect" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2/PreviewContainer"]
+material = SubResource("ShaderMaterial_m41qk")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("2_41gti")
 expand_mode = 4
 
 [node name="Preview2" type="TextureRect" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer2/PreviewContainer"]
+material = SubResource("ShaderMaterial_35jxk")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("3_f54a5")
 expand_mode = 2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://caqh85mb75rbg"
+path="res://.godot/imported/shape of 哈基米.mp3-a2cd85e37e86e82d028e41894e15ee7c.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/bgm/InGame/shape of 哈基米.mp3"
+dest_files=["res://.godot/imported/shape of 哈基米.mp3-a2cd85e37e86e82d028e41894e15ee7c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

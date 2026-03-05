@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://botk4md1n126k"]
+[gd_scene load_steps=5 format=3 uid="uid://botk4md1n126k"]
 
 [ext_resource type="Script" uid="uid://chc65cx1bwxkh" path="res://scenes/Claw/claw_launcher.gd" id="1_5461e"]
-[ext_resource type="Texture2D" uid="uid://brx2bb5phl8vq" path="res://assets/claw.png" id="2_h5aob"]
+[ext_resource type="Texture2D" uid="uid://brx2bb5phl8vq" path="res://assets/texture/claw.png" id="2_h5aob"]
+[ext_resource type="Shader" uid="uid://mrki4cuqrgs3" path="res://scenes/Balls/ball.gdshader" id="3_h5aob"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1vbw"]
+shader = ExtResource("3_h5aob")
 
 [node name="ClawLauncher" type="Node2D"]
 script = ExtResource("1_5461e")
@@ -16,6 +20,8 @@ metadata/_edit_lock_ = true
 
 [node name="PreviewBall" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_d1vbw")
+position = Vector2(-1, 25)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
