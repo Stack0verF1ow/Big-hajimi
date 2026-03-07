@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="合成哈基米"
-run/main_scene="uid://dtb27q2weqh5t"
+run/main_scene="uid://dipt5u3te0r8u"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

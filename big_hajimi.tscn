@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dipt5u3te0r8u"]
+
+[ext_resource type="Script" uid="uid://1n1jjc0ww6ik" path="res://game.gd" id="1_hbnck"]
+
+[node name="BigHajimi" type="Node"]
+script = ExtResource("1_hbnck")

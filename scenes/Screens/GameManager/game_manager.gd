@@ -5,7 +5,7 @@ enum State { IN_PLAY, GAME_OVER, PAUSE }
 # ── 场景依赖（由 GameScene._ready() 注册）───────────────────
 var ui:               UI
 var launcher_manager: LauncherManager
-var ball_scene_root:  Node2D   # 球生成的父节点（容器场景根节点）
+var ball_scene_root:  Screen   # 球生成的父节点（容器场景根节点）
 
 # ── 游戏数据 ─────────────────────────────────────────────────
 var score:          int = 0
@@ -33,7 +33,7 @@ func _ready() -> void:
 func register_scene(
 	p_ui: UI,
 	p_launcher_manager: LauncherManager,
-	p_ball_scene_root: Node2D
+	p_ball_scene_root: Screen
 ) -> void:
 	ui               = p_ui
 	launcher_manager = p_launcher_manager

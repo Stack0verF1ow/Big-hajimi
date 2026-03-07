@@ -15,7 +15,7 @@
 	  "radius": 33.0,
 	  "texture": "res://assets/texture/ball/ball_2.png",
 	  "score": 20,
-	  "spawn_sfx": "res://assets/audio/sfx/曼波，曼波.wav",
+	  "spawn_sfx": "res://assets/audio/sfx/哈基米我那咩路多.wav",
 	  "spawn_sfx_chance": 0.10
 	},
 	{
@@ -24,7 +24,7 @@
 	  "radius": 47.0,
 	  "texture": "res://assets/texture/ball/ball_3.png",
 	  "score": 40,
-	  "spawn_sfx": "res://assets/audio/sfx/曼波，曼波.wav",
+	  "spawn_sfx": "res://assets/audio/sfx/阿西噶阿西噶阿西噶.wav",
 	  "spawn_sfx_chance": 0.15
 	},
 	{
@@ -33,7 +33,7 @@
 	  "radius": 60.0,
 	  "texture": "res://assets/texture/ball/ball_4.png",
 	  "score": 80,
-	  "spawn_sfx": "res://assets/audio/sfx/曼波，曼波.wav",
+	  "spawn_sfx": "res://assets/audio/sfx/哈压库那路.wav",
 	  "spawn_sfx_chance": 1.0
 	},
 	{
@@ -51,7 +51,7 @@
 	  "radius": 87.0,
 	  "texture": "res://assets/texture/ball/ball_6.png",
 	  "score": 320,
-	  "spawn_sfx": "res://assets/audio/sfx/曼波，曼波.wav",
+	  "spawn_sfx": "res://assets/audio/sfx/华夏，曼波.wav",
 	  "spawn_sfx_chance": 1.0
 	},
 	{
@@ -60,7 +60,7 @@
 	  "radius": 100.0,
 	  "texture": "res://assets/texture/ball/ball_7.png",
 	  "score": 640,
-	  "spawn_sfx": "res://assets/audio/sfx/曼波，曼波.wav",
+	  "spawn_sfx": "res://assets/audio/sfx/哦马吉里曼波.wav",
 	  "spawn_sfx_chance": 1.0
 	}
   ]

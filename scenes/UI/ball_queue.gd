@@ -1,4 +1,5 @@
 class_name BallQueue
+extends RefCounted
 
 signal queue_changed(indices: Array[int])
 

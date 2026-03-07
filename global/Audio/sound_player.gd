@@ -2,10 +2,10 @@ extends Node
 
 # ── 公共音效预加载表（各球独有的 spawn_sfx 不在此处）────────
 const SOUNDS: Dictionary = {
-	"drop"         : "res://assets/sfx/drop.wav",
+	"drop"         : "res://assets/audio/sfx/duang.wav",
 	"merge_normal" : "res://assets/sfx/merge_normal.wav",
-	"merge_max"    : "res://assets/sfx/merge_max.wav",
-	"ui_click"     : "res://assets/sfx/ui_click.wav",
+	"merge_max"    : "res://assets/audio/sfx/wow.wav",
+	"ui_click"     : "res://assets/audio/sfx/wow.wav",
 }
 
 const COMBO_PITCH_BASE := 1.0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbmbecvdsmm6j"]
+[gd_scene load_steps=4 format=3 uid="uid://cbmbecvdsmm6j"]
 
 [ext_resource type="Script" uid="uid://bfvvfqb84yqb5" path="res://scenes/Container/deadline.gd" id="1_okx13"]
+[ext_resource type="Script" uid="uid://rpos85bpemi1" path="res://scenes/Container/deadline_visual.gd" id="2_wf6lr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gg8i0"]
 size = Vector2(540, 10)
@@ -16,6 +17,11 @@ script = ExtResource("1_okx13")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Deadline"]
 position = Vector2(271, 230)
 shape = SubResource("RectangleShape2D_gg8i0")
+
+[node name="DeadlineVisual" type="Line2D" parent="Deadline"]
+points = PackedVector2Array(2, 232, 538, 232)
+width = 5.0
+script = ExtResource("2_wf6lr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-189.48131, 171.04604)

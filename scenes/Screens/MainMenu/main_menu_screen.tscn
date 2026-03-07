@@ -1,0 +1,226 @@
+[gd_scene load_steps=10 format=3 uid="uid://crc8eiog5haut"]
+
+[ext_resource type="Script" uid="uid://58mi6aq1nr8w" path="res://scenes/Screens/MainMenu/main_menu_screen.gd" id="1_hwpsm"]
+[ext_resource type="Texture2D" uid="uid://cvubmuq82vwcc" path="res://assets/texture/UI/background.png" id="1_kx3th"]
+[ext_resource type="Texture2D" uid="uid://b3p50qnecl2la" path="res://assets/texture/UI/title.png" id="2_hwpsm"]
+[ext_resource type="Texture2D" uid="uid://c5artomkwrdsd" path="res://assets/texture/UI/modifided version of the sprite sheet.png" id="3_l5p47"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwd3r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wpcnu"]
+texture = ExtResource("3_l5p47")
+texture_margin_left = 7.0
+texture_margin_top = 8.0
+texture_margin_right = 7.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(163, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wg577"]
+texture = ExtResource("3_l5p47")
+texture_margin_left = 7.0
+texture_margin_top = 8.0
+texture_margin_right = 7.0
+texture_margin_bottom = 12.0
+region_rect = Rect2(259, 180, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwpsm"]
+texture = ExtResource("3_l5p47")
+region_rect = Rect2(837, 100, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5p47"]
+texture = ExtResource("3_l5p47")
+region_rect = Rect2(869, 102, 22, 22)
+
+[node name="MainMenuScreen" type="Node"]
+script = ExtResource("1_hwpsm")
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_cwd3r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kx3th")
+expand_mode = 1
+
+[node name="MainMeun" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMeun"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 40
+
+[node name="GameTitle" type="TextureRect" parent="MainMeun/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_hwpsm")
+expand_mode = 3
+
+[node name="seperator" type="Control" parent="MainMeun/VBoxContainer"]
+layout_mode = 2
+
+[node name="DetailMeun" type="VBoxContainer" parent="MainMeun/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="MainMeun/VBoxContainer/DetailMeun"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+text = "开始游戏"
+icon_alignment = 1
+
+[node name="Continue" type="Button" parent="MainMeun/VBoxContainer/DetailMeun"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+text = "继续游戏"
+
+[node name="Settings" type="Button" parent="MainMeun/VBoxContainer/DetailMeun"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+text = "游戏设置"
+
+[node name="Costom" type="Button" parent="MainMeun/VBoxContainer/DetailMeun"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+text = "自定义"
+
+[node name="seperator" type="Control" parent="MainMeun/VBoxContainer/DetailMeun"]
+layout_mode = 2
+
+[node name="Backdrop" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameSettings" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GameSettings"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_l5p47")
+region_rect = Rect2(709, 36, 22, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="GameSettings/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameSettings/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -30
+theme_override_constants/margin_right = -15
+
+[node name="ExitButton" type="Button" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_hwpsm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l5p47")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l5p47")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "BGM音量"
+
+[node name="MusicVolume" type="HScrollBar" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "音效音量"
+
+[node name="SoundVolume" type="HScrollBar" parent="GameSettings/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4

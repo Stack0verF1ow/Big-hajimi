@@ -4,6 +4,7 @@ class_name Ball
 # ── FSM 状态枚举 ─────────────────────────────────────────────
 enum State { IDLE, MERGING, DEAD }
 
+@warning_ignore("unused_signal")
 signal want_to_merge(ball_a: Ball, ball_b: Ball)
 
 # ── 数据属性 ─────────────────────────────────────────────────

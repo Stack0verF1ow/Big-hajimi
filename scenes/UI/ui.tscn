@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://7d0ytgxn27wi"]
+[gd_scene load_steps=17 format=3 uid="uid://7d0ytgxn27wi"]
 
 [ext_resource type="Script" uid="uid://dhhasqtasn17c" path="res://scenes/UI/ui.gd" id="1_f54a5"]
 [ext_resource type="Texture2D" uid="uid://c5artomkwrdsd" path="res://assets/texture/UI/modifided version of the sprite sheet.png" id="1_suays"]
 [ext_resource type="Shader" uid="uid://mrki4cuqrgs3" path="res://scenes/Balls/ball.gdshader" id="3_7e3k0"]
+[ext_resource type="Texture2D" uid="uid://byf0kyp52vrcu" path="res://assets/texture/UI/Gemini_Generated_Image_mkpdnjmkpdnjmkpd.png" id="4_f54a5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yb1mt"]
 texture = ExtResource("1_suays")
@@ -17,6 +18,38 @@ shader = ExtResource("3_7e3k0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_35jxk"]
 shader = ExtResource("3_7e3k0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7e3k0"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(773, 68, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m41qk"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(805, 70, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_35jxk"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(677, 102, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpnoy"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(645, 100, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vb61p"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(645, 68, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owlbh"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(677, 70, 22, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c5elv"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(709, 164, 22, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cketn"]
+texture = ExtResource("1_suays")
+region_rect = Rect2(741, 166, 22, 22)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_f54a5")
@@ -42,29 +75,12 @@ theme_override_constants/margin_right = 5
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
-alignment = 1
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = -100
 
-[node name="Control" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Control3" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="ScoreLabel" type="Label" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "分数"
-
-[node name="Control2" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="PauseButton" type="Button" parent="UIContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PauseButton" type="Button" parent="UIContainer/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -74,6 +90,41 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_yb1mt")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_41gti")
 theme_override_styles/hover = SubResource("StyleBoxTexture_41gti")
 toggle_mode = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UIContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_suays")
+region_rect = Rect2(153, 9, 30, 30)
+patch_margin_left = 20
+patch_margin_top = 10
+patch_margin_right = 20
+patch_margin_bottom = 10
+
+[node name="ScoreLabel" type="Label" parent="UIContainer/MarginContainer/VBoxContainer/NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -22.5
+offset_right = 32.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 0.09411765, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "分数"
+horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -106,3 +157,101 @@ material = SubResource("ShaderMaterial_35jxk")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 expand_mode = 2
+
+[node name="PauseUI" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="PauseUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 250
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PauseUI/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_f54a5")
+region_rect = Rect2(16, 144, 216, 256)
+patch_margin_left = 30
+patch_margin_top = 60
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseUI/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseUI/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseUI/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HomeButton" type="Button" parent="PauseUI/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_7e3k0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m41qk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_m41qk")
+
+[node name="CountineButton" type="Button" parent="PauseUI/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_35jxk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tpnoy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_35jxk")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseUI/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SettingsButton" type="Button" parent="PauseUI/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_vb61p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_owlbh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_owlbh")
+
+[node name="HelperButton" type="Button" parent="PauseUI/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_c5elv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cketn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cketn")
+
+[node name="Control" type="Control" parent="PauseUI/VBoxContainer"]
+layout_mode = 2
