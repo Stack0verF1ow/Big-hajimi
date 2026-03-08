@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtb27q2weqh5t"]
+[gd_scene load_steps=8 format=3 uid="uid://dtb27q2weqh5t"]
 
 [ext_resource type="Script" uid="uid://cvpvtwln72plq" path="res://scenes/Screens/Game/game_screen.gd" id="1_u8leq"]
 [ext_resource type="Script" uid="uid://cxe86hn6cqwbi" path="res://scenes/Claw/launcher_manager.gd" id="2_qurtu"]
 [ext_resource type="PackedScene" uid="uid://botk4md1n126k" path="res://scenes/Claw/claw_launcher.tscn" id="3_wqqpr"]
 [ext_resource type="PackedScene" uid="uid://cbmbecvdsmm6j" path="res://scenes/Container/hajimi_container.tscn" id="4_dyvbe"]
+[ext_resource type="Script" uid="uid://20bp32de5flp" path="res://scenes/Screens/Game/interactable_area.gd" id="5_gy5ql"]
 [ext_resource type="PackedScene" uid="uid://7d0ytgxn27wi" path="res://scenes/UI/ui.tscn" id="5_ibi6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_duyj4"]
-size = Vector2(559, 843)
+size = Vector2(551, 792)
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_u8leq")
@@ -27,11 +28,14 @@ metadata/_edit_lock_ = true
 
 [node name="InteractableArea" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
 monitoring = false
 monitorable = false
+script = ExtResource("5_gy5ql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(269.5, 545.5)
+position = Vector2(265.5, 571)
 shape = SubResource("RectangleShape2D_duyj4")
 
 [node name="UI" parent="." instance=ExtResource("5_ibi6l")]

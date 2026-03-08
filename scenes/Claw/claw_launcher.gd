@@ -1,8 +1,8 @@
 class_name ClawLauncher
 extends BaseLauncher
 
-var _x_min:      float = 0.0
-var _x_max:      float = 0.0
+var _x_min:       float = 0.0
+var _x_max:       float = 0.0
 var _ball_radius: float = 0.0
 
 @onready var visual:       Node2D   = $Visual
@@ -15,30 +15,23 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_follow_mouse()
-	if Input.is_action_just_pressed("create"):
-		try_launch()
-	# 调用父类 _process 更新轨迹预览
-	super._process(delta)
+	super._process(delta)   # 父类更新轨迹预览
 
 # ── BaseLauncher 接口实现 ─────────────────────────────────────
 
-func show_next_ball(config: Dictionary) -> void:
-	var tex: Texture2D = load(config["texture"])
-	var rad: float     = config.get("radius", 50.0)
-	_ball_radius = rad
-
+func show_next_ball(texture_path: String, radius: float) -> void:
+	_ball_radius = radius
+	var tex := load(texture_path) as Texture2D
+	if not tex:
+		return
 	preview_ball.texture = tex
+	var d := radius * 2.0
 	var tex_size := tex.get_size()
-	var d := rad * 2.0
 	preview_ball.scale = Vector2(d / tex_size.x, d / tex_size.y)
 
-# 机械爪轨迹：从 SpawnPoint 垂直向下到屏幕底部
-# 坐标相对于 TrajectoryPreview（即 SpawnPoint），所以起点是 Vector2.ZERO
 func get_trajectory_points() -> Array[Vector2]:
-	# 计算从 SpawnPoint 到屏幕底部的剩余距离
 	var remaining_height := get_viewport_rect().size.y - spawn_point.global_position.y
-	var points: Array[Vector2] = [Vector2.ZERO, Vector2(0.0, remaining_height)]
-	return points
+	return [Vector2.ZERO, Vector2(0.0, remaining_height)]
 
 # ── 私有 ─────────────────────────────────────────────────────
 

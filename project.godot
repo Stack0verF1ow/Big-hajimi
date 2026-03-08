@@ -22,6 +22,10 @@ GameManager="*res://scenes/Screens/GameManager/game_manager.gd"
 SoundPlayer="*res://global/Audio/sound_player.gd"
 MusicPlayer="*res://global/Audio/music_player.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=540
