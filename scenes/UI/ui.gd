@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var pause_button:      Button         = %PauseButton
 @onready var skill_container:   HBoxContainer  = %SkillContainer
 @onready var preview_container: HBoxContainer  = %PreviewContainer
+@onready var preview_1: TextureRect = %Preview1
+@onready var preview_2: TextureRect = %Preview2
 
 # ── 暂停面板 ─────────────────────────────────────────────────
 @onready var pause_ui:        MarginContainer  = %PauseUI
@@ -41,11 +43,12 @@ func setup() -> void:
 # ── HUD 更新 ─────────────────────────────────────────────────
 
 func on_queue_preview_updated(texture_paths: Array[String]) -> void:
-	var slots: Array[Node] = preview_container.get_children()
-	for i in min(slots.size(), texture_paths.size()):
-		var slot: TextureRect = slots[i]
-		slot.texture = load(texture_paths[i])
-
+	var backgrounds: Array[Node] = preview_container.get_children()
+	for i in min(backgrounds.size(), texture_paths.size()):
+		var slot := backgrounds[i].get_child(0) as TextureRect
+		if slot:
+			slot.texture = load(texture_paths[i])
+		
 func _on_score_changed(value: int) -> void:
 	score_label.text = str(value)
 

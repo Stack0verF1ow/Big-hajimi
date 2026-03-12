@@ -3,33 +3,33 @@
 [ext_resource type="Script" uid="uid://58mi6aq1nr8w" path="res://scenes/Screens/MainMenu/main_menu_screen.gd" id="1_hwpsm"]
 [ext_resource type="Texture2D" uid="uid://cvubmuq82vwcc" path="res://assets/texture/UI/background.png" id="1_kx3th"]
 [ext_resource type="Texture2D" uid="uid://b3p50qnecl2la" path="res://assets/texture/UI/title.png" id="2_hwpsm"]
-[ext_resource type="Texture2D" uid="uid://c5artomkwrdsd" path="res://assets/texture/UI/modifided version of the sprite sheet.png" id="3_l5p47"]
+[ext_resource type="Texture2D" uid="uid://4y88fmvaa4ua" path="res://assets/texture/UI/UI1.0.png" id="4_l5p47"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cwd3r"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wpcnu"]
-texture = ExtResource("3_l5p47")
-texture_margin_left = 7.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ubpdr"]
+texture = ExtResource("4_l5p47")
+texture_margin_left = 4.0
 texture_margin_top = 8.0
-texture_margin_right = 7.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(163, 178, 90, 27)
+texture_margin_right = 4.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(363, 399, 201, 62)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wg577"]
-texture = ExtResource("3_l5p47")
-texture_margin_left = 7.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wirmj"]
+texture = ExtResource("4_l5p47")
+texture_margin_left = 4.0
 texture_margin_top = 8.0
-texture_margin_right = 7.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(259, 180, 90, 25)
+texture_margin_right = 4.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(577, 402, 200, 60)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwpsm"]
-texture = ExtResource("3_l5p47")
-region_rect = Rect2(837, 100, 22, 24)
+texture = ExtResource("4_l5p47")
+region_rect = Rect2(1842, 226, 56, 59)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5p47"]
-texture = ExtResource("3_l5p47")
-region_rect = Rect2(869, 102, 22, 22)
+texture = ExtResource("4_l5p47")
+region_rect = Rect2(1915, 229, 56, 56)
 
 [node name="MainMenuScreen" type="Node"]
 script = ExtResource("1_hwpsm")
@@ -86,9 +86,9 @@ size_flags_vertical = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ubpdr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wirmj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wirmj")
 text = "开始游戏"
 icon_alignment = 1
 
@@ -100,9 +100,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ubpdr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wirmj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wirmj")
 text = "继续游戏"
 
 [node name="Settings" type="Button" parent="MainMeun/VBoxContainer/DetailMeun"]
@@ -113,9 +113,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ubpdr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wirmj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wirmj")
 text = "游戏设置"
 
 [node name="Costom" type="Button" parent="MainMeun/VBoxContainer/DetailMeun"]
@@ -126,9 +126,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_wpcnu")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_wg577")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wg577")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ubpdr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wirmj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wirmj")
 text = "自定义"
 
 [node name="seperator" type="Control" parent="MainMeun/VBoxContainer/DetailMeun"]
@@ -156,12 +156,12 @@ custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_l5p47")
-region_rect = Rect2(709, 36, 22, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+texture = ExtResource("4_l5p47")
+region_rect = Rect2(25, 238, 70, 71)
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 30
 
 [node name="MarginContainer" type="MarginContainer" parent="GameSettings/NinePatchRect"]
 layout_mode = 1
